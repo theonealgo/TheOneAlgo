@@ -1,0 +1,58 @@
+// components/FAQAccordion.tsx
+'use client';
+
+import React from 'react';
+import { Disclosure } from '@headlessui/react';
+import { ChevronDown } from 'lucide-react';
+
+const faqs = [
+  {
+    question: 'How do I get access to an indicator?',
+    answer:
+      'Once you’ve signed up, we’ll send you a private TradingView link—be sure to tell us your TradingView username at signup so we can share it correctly.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer:
+      'We support all major credit cards via Stripe (Visa, MasterCard, AMEX) and Apple Pay/Google Pay.',
+  },
+  {
+    question: 'Can I change my subscription plan?',
+    answer:
+      'Yes—log in, go to your dashboard, and choose “Manage Subscription.” You can upgrade, downgrade, or cancel at any time.',
+  },
+  {
+    question: 'Is there a free trial?',
+    answer:
+      'We offer a 30-day free trial on all plans. You’ll enter payment details at signup but won’t be charged until your trial ends.',
+  },
+];
+
+export function FAQAccordion() {
+  return (
+    <section id="faqs" className="pt-24 px-6 max-w-3xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-white">Frequently Asked Questions</h2>
+      <div className="space-y-4">
+        {faqs.map(({ question, answer }, idx) => (
+          <Disclosure key={idx} as="div" className="bg-gray-800 rounded-lg">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="w-full flex justify-between items-center px-4 py-3 text-left text-white hover:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  <span className="font-medium">{question}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 transform transition-transform ${
+                      open ? 'rotate-180' : ''
+                    }`}
+                  />
+                </Disclosure.Button>
+                <Disclosure.Panel className="px-4 py-2 text-gray-300">
+                  {answer}
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+        ))}
+      </div>
+    </section>
+  );
+}

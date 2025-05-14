@@ -1,0 +1,14 @@
+import { signIn } from "next-auth/react";
+
+async function handleSignup(e) {
+  e.preventDefault();
+  await signIn("credentials", {
+    redirect: true,
+    email,
+    password,
+    tradingViewUsername: tvUser,
+    plan,
+    billing,
+    callbackUrl: "/api/stripe/create-checkout",
+  });
+}
