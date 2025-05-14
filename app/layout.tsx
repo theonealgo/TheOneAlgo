@@ -3,7 +3,8 @@ import "./styles/globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-
+import 'react-medium-image-zoom/dist/styles.css';
+import './zoom-overrides.css';
 import Providers from "./providers";                   
 import { getServerSession } from "next-auth/next";   // ← IMPORT MUST BE exactly from "next-auth/next"
 import { authOptions } from "@/lib/auth";             
