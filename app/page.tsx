@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import 'react-medium-image-zoom/dist/styles.css';
-import './zoom-overrides.css';
 import { Disclosure } from '@headlessui/react';
 import { ChevronDown } from 'lucide-react';
 import { FAQAccordion } from '@/components/FAQAccordion';
