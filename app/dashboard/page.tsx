@@ -61,20 +61,19 @@ export default function DashboardPage() {
       setMessage("Thanks! You'll receive an email shortly.");
       setUsername("");
 
-      // re-fetch just the username field
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("profiles")
         .select("tradingViewUsername")
         .eq("id", session.user.id)
         .single();
-
-      // only update if data is non-null
-      if (data) {
-        setProfile((p) =>
-          p
-            ? { ...p, tradingViewUsername: data.tradingViewUsername }
-            : p
-        );
+      // re-fetch just the username field
+      if (error) {
+        console.error("Failed to re-fetch username:", error);
+      } else if (data?.tradingViewUsername) {
+        setProfile(p => p ? {
+          ...p,
+          tradingViewUsername: data.tradingViewUsername
+        } : p);
       }
     } else {
       setMessage("Something went wrong. Please try again.");
