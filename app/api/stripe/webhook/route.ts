@@ -46,7 +46,7 @@ export async function POST(req: Request) {
       break;
     }
     case "invoice.payment_failed": {
-      const invoice = event.data.object as Stripe.Invoice;
+      const invoice = event.data.object as any;
       await p.update({ status: "past_due" })
              .eq("subscription_id", invoice.subscription as string);
       break;
