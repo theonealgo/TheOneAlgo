@@ -1,9 +1,7 @@
 // app/dashboard/page.tsx
-'use client'
-export const dynamic = 'force-dynamic'
+import DashboardClient from "./DashboardClient";
 
-import DashboardClient from './DashboardClient'
-
+// no "useSession" or hooks in here — it stays a pure server component
 export default function Page() {
-  return <DashboardClient />
+  return <DashboardClient />;
 }
