@@ -18,14 +18,14 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleLogin} className="space-y-4">
+    <form onSubmit={handleLogin} className="space-y-4 bg-gray-900 p-6 rounded-lg shadow-lg">
       <input
         type="email"
         placeholder="Email"
         required
         value={email}
         onChange={(e) => setEmail(e.currentTarget.value)}
-        className="w-full px-4 py-3 bg-gray-800 rounded"
+        className="w-full px-4 py-3 bg-gray-800 text-white rounded"
       />
       <input
         type="password"
@@ -33,11 +33,11 @@ export default function LoginForm() {
         required
         value={password}
         onChange={(e) => setPassword(e.currentTarget.value)}
-        className="w-full px-4 py-3 bg-gray-800 rounded"
+        className="w-full px-4 py-3 bg-gray-800 text-white rounded"
       />
       <button
         type="submit"
-        className="w-full bg-blue-600 py-3 rounded-lg font-semibold"
+        className="w-full bg-blue-600 py-3 rounded-lg font-semibold text-white hover:brightness-110 transition"
       >
         Log In
       </button>
