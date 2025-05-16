@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { Disclosure } from '@headlessui/react';
 import { ChevronDown } from 'lucide-react';
 import { FAQAccordion } from '@/components/FAQAccordion';
+import 'react-medium-image-zoom/dist/styles.css'
+import './zoom-overrides.css'
 const Zoom = dynamic(() => import('react-medium-image-zoom'), { ssr: false });
 
 /* headline text for the typewriter */
