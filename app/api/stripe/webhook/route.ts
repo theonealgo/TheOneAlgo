@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       break;
     }
     case "invoice.payment_succeeded": {
-      const invoice = event.data.object as Stripe.Invoice;
+       const invoice = event.data.object as any;
       if (invoice.billing_reason === "subscription_create" || invoice.billing_reason === "subscription_cycle") {
         // subscription active or renewed
         await p.update({ status: "active", subscription_id: invoice.subscription as string })
