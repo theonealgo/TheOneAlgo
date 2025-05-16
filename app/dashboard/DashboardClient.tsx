@@ -6,7 +6,11 @@ import { supabase } from "@/lib/supabaseClient";
 
 export default function DashboardClient() {
   const { data: session, status } = useSession();
-  const [profile, setProfile] = useState<{ plan_key: string; billing: string; tradingViewUsername: string | null } | null>(null);
+  const [profile, setProfile] = useState<{
+    plan_key: string;
+    billing: string;
+    tradingViewUsername: string | null;
+  } | null>(null);
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
 
@@ -29,12 +33,19 @@ export default function DashboardClient() {
     }
   }, [status, session?.user?.id]);
 
-  if (status === "loading") return <p className="p-8 text-center">Loading…</p>;
-  if (!session) return (
-    <p className="p-8 text-center">
-      Please <button onClick={() => signIn()} className="text-blue-600">sign in</button>.
-    </p>
-  );
+  if (status === "loading") {
+    return <p className="p-8 text-center">Loading…</p>;
+  }
+  if (!session) {
+    return (
+      <p className="p-8 text-center">
+        Please{" "}
+        <button onClick={() => signIn()} className="text-blue-600">
+          sign in
+        </button>.
+      </p>
+    );
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +64,11 @@ export default function DashboardClient() {
         .eq("id", session.user.id)
         .single();
       if (data?.tradingViewUsername) {
-        setProfile(p => p ? { ...p, tradingViewUsername: data.tradingViewUsername } : p);
+        setProfile(p =>
+          p
+            ? { ...p, tradingViewUsername: data.tradingViewUsername }
+            : p
+        );
       }
     } else {
       setMessage("Something went wrong. Please try again.");
