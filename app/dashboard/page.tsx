@@ -14,14 +14,14 @@ export default function DashboardPage() {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
 
-  // 3️⃣ Fetch your profile row as soon as we know you’re signed in
+  // Fetch your profile row once authenticated
   useEffect(() => {
-    if (status === "authenticated") {
+    if (status === "authenticated" && session?.user?.id) {
       supabase
-  .from("profiles")
-  .select('plan_key, billing, "tradingViewUsername"')
-  .eq("id", session.user.id)
-  .single()
+        .from("profiles")
+        .select('plan_key, billing, "tradingViewUsername"')
+        .eq("id", session.user.id)
+        .single()
         .then(({ data, error }) => {
           if (!error && data) {
             setProfile({
@@ -32,7 +32,7 @@ export default function DashboardPage() {
           }
         });
     }
-  }, [status, session?.user.id]);
+  }, [status, session?.user?.id]);
 
   if (status === "loading") {
     return <p className="p-8 text-center">Loading…</p>;
@@ -43,13 +43,12 @@ export default function DashboardPage() {
         Please{" "}
         <button onClick={() => signIn()} className="text-blue-600">
           sign in
-        </button>
-        .
+        </button>.
       </p>
     );
   }
 
-  // handle TradingView-username form submit (unchanged)
+  // handle TradingView-username form submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
@@ -61,13 +60,22 @@ export default function DashboardPage() {
     if (res.ok) {
       setMessage("Thanks! You'll receive an email shortly.");
       setUsername("");
-      // re-fetch profile so form disappears
+
+      // re-fetch just the username field
       const { data } = await supabase
         .from("profiles")
         .select("tradingViewUsername")
         .eq("id", session.user.id)
         .single();
-      setProfile((p) => (p ? { ...p, tradingViewUsername: data.tradingViewUsername } : p));
+
+      // only update if data is non-null
+      if (data) {
+        setProfile((p) =>
+          p
+            ? { ...p, tradingViewUsername: data.tradingViewUsername }
+            : p
+        );
+      }
     } else {
       setMessage("Something went wrong. Please try again.");
     }
@@ -79,8 +87,8 @@ export default function DashboardPage() {
         Welcome, {session.user.name ?? session.user.email}!
       </h1>
 
-      {/* 5️⃣ TradingView-username form */}
-      {!profile?.tradingViewUsername && (
+      {/* TradingView-username form */}
+      {!profile?.tradingViewUsername ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           <label className="block">
             <span className="text-gray-300">TradingView Username</span>
@@ -96,9 +104,7 @@ export default function DashboardPage() {
             Submit
           </button>
         </form>
-      )}
-
-      {profile?.tradingViewUsername && (
+      ) : (
         <p>Your TradingView Username: {profile.tradingViewUsername}</p>
       )}
 
