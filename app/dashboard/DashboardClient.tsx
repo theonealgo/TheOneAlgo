@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useSession, signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
@@ -14,15 +14,16 @@ export default function DashboardClient() {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
 
+  // fetch profile once we’re authenticated
   useEffect(() => {
     if (status === "authenticated" && session?.user?.id) {
       supabase
         .from("profiles")
-        .select('plan_key, billing, "tradingViewUsername"')
+        .select(`plan_key, billing, tradingViewUsername`)
         .eq("id", session.user.id)
         .single()
         .then(({ data, error }) => {
-          if (!error && data) {
+          if (data && !error) {
             setProfile({
               plan_key: data.plan_key,
               billing: data.billing,
@@ -42,7 +43,8 @@ export default function DashboardClient() {
         Please{" "}
         <button onClick={() => signIn()} className="text-blue-600">
           sign in
-        </button>.
+        </button>
+        .
       </p>
     );
   }
@@ -58,13 +60,15 @@ export default function DashboardClient() {
     if (res.ok) {
       setMessage("Thanks! You'll receive an email shortly.");
       setUsername("");
+
+      // re-fetch just the username
       const { data } = await supabase
         .from("profiles")
         .select("tradingViewUsername")
         .eq("id", session.user.id)
         .single();
       if (data?.tradingViewUsername) {
-        setProfile(p =>
+        setProfile((p) =>
           p
             ? { ...p, tradingViewUsername: data.tradingViewUsername }
             : p
@@ -81,7 +85,6 @@ export default function DashboardClient() {
         Welcome, {session.user.name ?? session.user.email}!
       </h1>
 
-      {/* TradingView-username form */}
       {!profile?.tradingViewUsername ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           <label className="block">
