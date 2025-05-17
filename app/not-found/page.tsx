@@ -1,5 +1,7 @@
-// app/not-found.tsx   ← create this file
+// app/_not-found/page.tsx
 'use client';
+
+export const dynamic = 'error';          // <-- prevents prerender crash
 
 import Link from 'next/link';
 
@@ -7,7 +9,6 @@ export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
       <h1 className="text-4xl font-bold mb-4">Page Not Found</h1>
-
       <p className="mb-8 text-gray-400">
         Sorry, we couldn’t find that page.
       </p>
