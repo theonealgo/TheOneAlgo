@@ -1,4 +1,4 @@
-// components/Header.tsx
+/* components/Header.tsx */
 'use client';
 
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import { User as UserIcon, ChevronDown } from 'lucide-react';
 
 const menus = [
   {
-    key: 'product' as const,
+    key: 'product',
     label: 'Product',
     items: [
       { href: '/pricing', label: 'Pricing' },
@@ -17,7 +17,7 @@ const menus = [
     ],
   },
   {
-    key: 'resources' as const,
+    key: 'resources',
     label: 'Resources',
     items: [
       { href: '/documentation', label: 'Documentation' },
@@ -25,7 +25,7 @@ const menus = [
     ],
   },
   {
-    key: 'company' as const,
+    key: 'company',
     label: 'Company',
     items: [
       { href: '/about', label: 'About' },
@@ -36,27 +36,29 @@ const menus = [
 
 export default function Header() {
   const { data: session, status } = useSession();
-  console.log('useSession status:', status, 'session:', session);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const dropRef = useRef<HTMLDivElement>(null);
 
   // close dropdown when clicking outside
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setMenuOpen(false);
+    function handle(e: MouseEvent) {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+        setOpen(false);
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    console.log('Header session state:', status, session)
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handle);
+    return () => document.removeEventListener('mousedown', handle);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-black text-white px-6 py-4 flex items-center justify-between border-b border-gray-800 z-50">
+    <header
+      /* 🔹 transparent “glass” header so the background image shows through */
+      className="
+        fixed top-0 left-0 w-full z-50
+        px-6 py-4 flex items-center justify-between
+        backdrop-blur-md bg-black/30
+      "
+    >
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <Image
@@ -68,18 +70,22 @@ export default function Header() {
         />
       </Link>
 
-      {/* Primary nav menus */}
-      <nav className="flex items-center gap-6">
+      {/* Nav */}
+      <nav className="flex items-center gap-6 text-white">
         {menus.map(({ key, label, items }) => (
           <div key={key} className="relative group">
-            <button className="hover:text-teal-400 transition">{label}</button>
-            <div className="absolute left-0 top-full w-40 bg-gray-900 rounded shadow-lg py-2 z-50
-                             opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity">
+            <button className="hover:text-teal-300 transition">{label}</button>
+            <div
+              className="
+                absolute left-0 top-full mt-2 w-40 bg-gray-900/90 rounded shadow-lg py-2
+                opacity-0 invisible group-hover:visible group-hover:opacity-100 transition
+              "
+            >
               {items.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="block px-4 py-2 hover:bg-gray-800"
+                  className="block px-4 py-2 hover:bg-gray-800/60"
                 >
                   {label}
                 </Link>
@@ -88,64 +94,58 @@ export default function Header() {
           </div>
         ))}
 
-        {/* Get Started → Pricing */}
+        {/* CTA */}
         <Link
           href="/pricing"
-          className="ml-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500
-                     hover:brightness-110 text-white px-4 py-2 rounded-lg font-semibold transition"
+          className="
+            ml-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500
+            hover:brightness-110 text-white px-4 py-2 rounded-lg font-semibold transition
+          "
         >
           Get Started
         </Link>
 
-       {/* User icon dropdown */}
-<div className="relative ml-2" ref={dropdownRef}>
-  <button
-    onClick={() => setMenuOpen(o => !o)}
-    className="flex items-center p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition"
-  >
-    <UserIcon className="h-5 w-5" />
-    <ChevronDown className="h-4 w-4 ml-1" />
-  </button>
-
-  {menuOpen && (
-    <div className="absolute right-0 mt-2 w-48 bg-gray-900 rounded shadow-lg py-1 z-50">
-      {/* Always show Help */}
-      <Link
-        href="/help"
-        className="block px-4 py-2 text-sm hover:bg-gray-800"
-      >
-        Help
-      </Link>
-
-      {/* If signed out: Sign In */}
-      {status === 'unauthenticated' && (
-        <button
-          onClick={() =>
-            signIn(undefined, { callbackUrl: '/dashboard' })
-          }
-          className="w-full text-left px-4 py-2 text-sm hover:bg-gray-800"
-        >
-          Sign In
-        </button>
-      )}
-
-      {/* If signed in: show name & Sign Out */}
-      {status === 'authenticated' && session?.user && (
-        <>
-          <span className="block px-4 py-2 text-sm">
-            {session.user.name ?? session.user.email}
-          </span>
+        {/* User menu */}
+        <div className="relative ml-2" ref={dropRef}>
           <button
-            onClick={() => signOut({ callbackUrl: '/' })}
-            className="w-full text-left px-4 py-2 text-sm hover:bg-gray-800"
+            onClick={() => setOpen(o => !o)}
+            className="flex items-center p-2 rounded-full bg-gray-800/70 hover:bg-gray-700/70"
           >
-            Sign Out
+            <UserIcon className="h-5 w-5" />
+            <ChevronDown className="h-4 w-4 ml-1" />
           </button>
-        </>
-      )}
-    </div>
-  )}
-</div>
+
+          {open && (
+            <div className="absolute right-0 mt-2 w-48 bg-gray-900/90 rounded shadow-lg py-1">
+              <Link href="/help" className="block px-4 py-2 text-sm hover:bg-gray-800/60">
+                Help
+              </Link>
+
+              {status === 'unauthenticated' && (
+                <button
+                  onClick={() => signIn(undefined, { callbackUrl: '/dashboard' })}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-gray-800/60"
+                >
+                  Sign In
+                </button>
+              )}
+
+              {status === 'authenticated' && session?.user && (
+                <>
+                  <span className="block px-4 py-2 text-sm">
+                    {session.user.name ?? session.user.email}
+                  </span>
+                  <button
+                    onClick={() => signOut({ callbackUrl: '/' })}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-gray-800/60"
+                  >
+                    Sign Out
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   );
