@@ -1,11 +1,6 @@
-// app/layout.tsx   ❶ add this line
-'use client';
 import './styles/globals.css';
-import dynamic from 'next/dynamic';
 
-// ⬇️  load Header only in the browser so `useSession` never runs on the server
-const Header = dynamic(() => import('@/components/Header'), { ssr: false });
-// footer is fine to SSR
+import HeaderClient from '@/components/HeaderClient';
 import Footer from '@/components/Footer';
 
 export const metadata = {
@@ -21,13 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-black">
       <body className="antialiased text-white min-h-screen flex flex-col">
-        {/* header stays on every page, but only renders in the browser */}
-        <Header />
-
-        {/* page content */}
+        {/* header runs only in the browser */}
+        <HeaderClient />
         <main className="flex-1">{children}</main>
-
-        {/* global footer */}
         <Footer />
       </body>
     </html>
