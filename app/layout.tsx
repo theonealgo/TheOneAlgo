@@ -1,12 +1,11 @@
 // app/layout.tsx
 import './styles/globals.css';
+import dynamic from 'next/dynamic';
 
-import Header from '@/components/Header';
+// ⬇️  load Header only in the browser so `useSession` never runs on the server
+const Header = dynamic(() => import('@/components/Header'), { ssr: false });
+// footer is fine to SSR
 import Footer from '@/components/Footer';
-
-/** <Providers> — uncomment if you were using next-auth or any context
-  import Providers from './providers';
-*/
 
 export const metadata = {
   title: 'The One Algo',
@@ -20,22 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-black">
-      {/*  🔹 background image is applied on <body> so it spans every page */}
-      <body
-        className="
-          antialiased text-white min-h-screen
-          bg-[url('/images/bground.jpg')] bg-cover bg-fixed bg-center
-        "
-      >
-        {/*  Header stays pinned to the top */}
+      <body className="antialiased text-white min-h-screen flex flex-col">
+        {/* header stays on every page, but only renders in the browser */}
         <Header />
 
-        {/*  Main content */}
-        <main className="pt-16">{/* 16 px = Header height offset */}
-          {/*  If using Providers, wrap <main> with <Providers> */}
-          {children}
-        </main>
+        {/* page content */}
+        <main className="flex-1">{children}</main>
 
+        {/* global footer */}
         <Footer />
       </body>
     </html>
