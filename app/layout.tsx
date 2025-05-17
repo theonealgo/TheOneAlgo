@@ -1,4 +1,5 @@
-// app/layout.tsx
+// app/layout.tsx   ❶ add this line
+'use client';
 import './styles/globals.css';
 import dynamic from 'next/dynamic';
 
