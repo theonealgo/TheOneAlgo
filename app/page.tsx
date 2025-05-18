@@ -130,114 +130,92 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      {/* ─────────────────────  PERFORMANCE  ───────────────────── */}
-    <section id="performance" className="py-24 px-4 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-24">
-          {performanceItems.map((item, i) => (
-            <div key={i} className="space-y-8 group">
-              <Zoom zoomMargin={40}>
-                <div className="relative h-[600px] w-full">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    quality={100}
-                    priority
-                    className="rounded-xl object-contain hover:shadow-xl transition-shadow"
-                    sizes="(max-width:768px)100vw,(max-width:1200px)50vw,800px"
-                  />
-                </div>
-              </Zoom>
-              <div className="px-4 space-y-4">
-                <h3 className="text-3xl font-bold text-white">{item.title}</h3>
-                <p className="text-gray-300 text-lg">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ─────────────────────  LIVE STATS  ───────────────────── */}
-    <section className="backdrop-blur-sm py-24 px-4 md:px-12">
-        <div className="max-w-6xl mx-auto text-center space-y-12">
-          <h2 className="text-5xl font-bold text-white">
-            Real Results. Real&nbsp;Time.
-          </h2>
-          <p className="text-2xl text-gray-300">
-            Our strategies are engineered for performance. See it live below.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-            <div className="p-8 rounded-xl bg-gray-800 shadow-lg">
-              <h3 className="text-4xl font-bold text-green-400">98%</h3>
-              <p className="mt-2 text-lg">Win&nbsp;Rate</p>
-            </div>
-            <div className="p-8 rounded-xl bg-gray-800 shadow-lg">
-              <h3 className="text-4xl font-bold text-green-400">4.36</h3>
-              <p className="mt-2 text-lg">Profit&nbsp;Factor</p>
-            </div>
-            <div className="p-8 rounded-xl bg-gray-800 shadow-lg">
-              <h3 className="text-4xl font-bold text-green-400">30&nbsp;Days</h3>
-              <p className="mt-2 text-lg">Free&nbsp;Trial</p>
-            </div>
+{/* ─────────────────────  PERFORMANCE  ───────────────────── */}
+<section id="performance" className="py-24 px-4 md:px-12 bg-amber-500/10">
+  <div className="max-w-7xl mx-auto space-y-24">
+    {performanceItems.map((item, i) => (
+      <div key={i} className="space-y-8 group">
+        <Zoom zoomMargin={40}>
+          <div className="relative h-[600px] w-full">
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              quality={100}
+              priority
+              className="rounded-xl object-contain hover:shadow-xl transition-shadow"
+              sizes="(max-width:768px)100vw,(max-width:1200px)50vw,800px"
+            />
           </div>
-
-          <div className="mt-16">
-            <Link
-              href="/auth?screen_hint=signup"
-              className="
-                inline-block text-black font-semibold px-10 py-4 rounded-full transition
-                bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-300 hover:brightness-110
-              "
-            >
-              Start&nbsp;Winning&nbsp;Today
-            </Link>
-          </div>
+        </Zoom>
+        <div className="px-4 space-y-4">
+          <h3 className="text-3xl font-bold text-white">{item.title}</h3>
+          <p className="text-gray-300 text-lg">{item.desc}</p>
         </div>
-      </section>
-      
-      {/* ────────────────────────  VIDEO  ─────────────────────── */}
-      <section className="relative backdrop-blur-sm py-24 px-4 md:px-12 overflow-hidden">
-        <video
-          src="/images/videos/market-chart.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-auto rounded-2xl shadow-xl"
-        />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Trade with Confidence. Powered by Data.
-          </h2>
-          <p className="text-xl md:text-2xl max-w-4xl">
-            Harness the power of our proven trading strategies and make informed,
-            data-driven decisions in real time.
-          </p>
-        </div>
-      </section>
-{/* …previous sections… */}
-
-{/* FAQ */}
-<section className="backdrop-blur-sm px-4 md:px-12 pb-32">
-  <FAQAccordion />
+      </div>
+    ))}
+  </div>
 </section>
 
-{/* …following sections… */}
-      {/* ───────────────────  BACK TO TOP  ───────────────────── */}
-      {showTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="
-            fixed bottom-8 right-8 p-3 rounded-full text-white shadow-lg transition
-            bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-300 hover:brightness-110
-          "
-          aria-label="Back to top"
-        >
-          ↑
-        </button>
-      )}
+{/* ─────────────────────  LIVE STATS  ───────────────────── */}
+<section className="py-24 px-4 md:px-12 bg-amber-500/10">
+  <div className="max-w-6xl mx-auto text-center space-y-12">
+    <h2 className="text-5xl font-bold text-white">Real Results. Real&nbsp;Time.</h2>
+    <p className="text-2xl text-gray-300">
+      Our strategies are engineered for performance. See it live below.
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+      <div className="p-8 rounded-xl bg-gray-800 shadow-lg">
+        <h3 className="text-4xl font-bold text-green-400">98%</h3>
+        <p className="mt-2 text-lg">Win&nbsp;Rate</p>
+      </div>
+      <div className="p-8 rounded-xl bg-gray-800 shadow-lg">
+        <h3 className="text-4xl font-bold text-green-400">4.36</h3>
+        <p className="mt-2 text-lg">Profit&nbsp;Factor</p>
+      </div>
+      <div className="p-8 rounded-xl bg-gray-800 shadow-lg">
+        <h3 className="text-4xl font-bold text-green-400">30&nbsp;Days</h3>
+        <p className="mt-2 text-lg">Free&nbsp;Trial</p>
+      </div>
     </div>
-  );
-}
+
+    <div className="mt-16">
+      <Link
+        href="/auth?screen_hint=signup"
+        className="
+          inline-block text-black font-semibold px-10 py-4 rounded-full transition
+          bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-300 hover:brightness-110
+        "
+      >
+        Start&nbsp;Winning&nbsp;Today
+      </Link>
+    </div>
+  </div>
+</section>
+
+{/* ────────────────────────  VIDEO  ─────────────────────── */}
+<section className="relative py-24 px-4 md:px-12 overflow-hidden bg-amber-500/10">
+  <video
+    src="/images/videos/market-chart.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-auto rounded-2xl shadow-xl"
+  />
+  <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+      Trade with Confidence. Powered by Data.
+    </h2>
+    <p className="text-xl md:text-2xl max-w-4xl">
+      Harness the power of our proven trading strategies and make informed,
+      data-driven decisions in real time.
+    </p>
+  </div>
+</section>
+
+{/* ─────────────────────────  FAQ  ───────────────────────── */}
+<section className="px-4 md:px-12 pb-32 bg-amber-500/10">
+  <FAQAccordion />
+</section>
