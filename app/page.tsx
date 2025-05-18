@@ -72,8 +72,7 @@ export default function Home() {
           className="relative flex items-center justify-start px-4 pb-32 bg-cover bg-center min-h-screen"
         style={{ backgroundImage: "url('/images/bground.jpg')" }}
       >
-        {/* translucent colour-wash over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30 backdrop-blur-[2px]" />
+
 
         {/* hero content */}
         <div className="relative z-10 flex flex-col justify-center px-8 md:px-16 py-16 max-w-6xl">
