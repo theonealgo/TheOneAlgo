@@ -1,15 +1,15 @@
-// app/layout.tsx
+/* app/layout.tsx */
 import './styles/globals.css';
 
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { authOptions }      from '@/lib/auth';
 
-import Providers     from './providers';
-import HeaderClient  from '@/components/HeaderClient';   // client-only header
-import Footer        from '@/components/Footer';
+import Providers    from './providers';
+import HeaderClient from '@/components/HeaderClient';
+import Footer       from '@/components/Footer';
 
 export const metadata = {
-  title: 'The One Algo',
+  title:       'The One Algo',
   description: 'Built with TradingView® technology',
 };
 
@@ -24,22 +24,27 @@ export default async function RootLayout({
     <html lang="en">
       <body className="m-0 antialiased text-white min-h-screen flex flex-col">
 
-        {/* ★ site-wide background image */}
+        {/* ——— background photo (covers the whole site) ——— */}
         <div
           className="fixed inset-0 -z-50 bg-cover bg-center"
           style={{
             backgroundImage: "url('/images/bground.jpg')",
-            backgroundAttachment: 'fixed', // parallax feel – remove if undesired
+            backgroundAttachment: 'fixed',   // parallax feel – remove if undesired
           }}
         />
 
-        {/* optional translucent wash over the photo
-        <div className="fixed inset-0 -z-40 bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30" />
-        */}
+        {/* ——— single global tint / blur layer ——— */}
+        <div className="fixed inset-0 -z-40 bg-gradient-to-br
+                        from-cyan-800/30 via-black/55 to-purple-800/30
+                        backdrop-blur-[2px]" />
 
         <Providers session={session}>
+          {/* Header sits on top and is fully transparent */}
           <HeaderClient />
-          <main className="flex-1">{children}</main>
+
+          {/* add top-padding so page content clears the fixed header */}
+          <main className="flex-1 pt-24">{children}</main>
+
           <Footer />
         </Providers>
       </body>
