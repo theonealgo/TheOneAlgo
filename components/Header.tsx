@@ -51,8 +51,8 @@ export default function Header() {
   }, []);
 
   return (
-   <header className="fixed top-0 left-0 w-full bg-transparent
-                   text-white px-6 py-4 flex items-center justify-between z-50">
+ <header className="fixed top-0 left-0 w-full bg-transparent
+                    text-white px-6 py-4 flex items-center justify-between z-50">
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <Image
