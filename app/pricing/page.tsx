@@ -59,7 +59,7 @@ export default function PricingPage() {
 
   /* ────────────────────────────── render ────────────────────────────── */
   return (
-    <div className="pt-28 bg-black text-white min-h-screen font-sans overflow-x-hidden">
+    <div className="pt-28 text-white min-h-screen font-sans overflow-x-hidden">
       {/* toggle */}
       <div className="flex justify-center mt-12 mb-4">
         <div className="bg-gray-900 p-1 rounded-full flex">
