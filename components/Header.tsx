@@ -75,12 +75,10 @@ export default function Header() {
         {menus.map(({ key, label, items }) => (
           <div key={key} className="relative group">
             <button className="hover:text-teal-300 transition">{label}</button>
-            <div
-              className="
-                absolute left-0 top-full mt-2 w-40 bg-gray-900/90 rounded shadow-lg py-2
-                opacity-0 invisible group-hover:visible group-hover:opacity-100 transition
-              "
-            >
+            <div className="absolute left-0 top-full w-40 bg-gray-900 rounded shadow-lg py-2 z-50
+                  opacity-0 pointer-events-none
+                  group-hover:opacity-100 group-hover:pointer-events-auto
+                transition-opacity duration-150">
               {items.map(({ href, label }) => (
                 <Link
                   key={href}
