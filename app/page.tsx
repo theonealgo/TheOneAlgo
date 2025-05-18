@@ -220,7 +220,10 @@ export default function Home() {
       </section>
 {/* …previous sections… */}
 
-<FAQAccordion />
+{/* FAQ */}
+<section className="bg-black px-4 md:px-12 pb-24">   {/* ← pb-24 pushes it up */}
+  <FAQAccordion />
+</section>
 
 {/* …following sections… */}
       {/* ───────────────────  BACK TO TOP  ───────────────────── */}
