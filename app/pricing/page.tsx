@@ -6,6 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function PricingPage() {
+  return (
+    <div className="pt-24">   {/* pushes content below header */}
+      …rest of page…
+    </div>
+  );
+}
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
 
   const pricingPlans = [
