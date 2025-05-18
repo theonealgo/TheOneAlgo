@@ -91,7 +91,7 @@ export default function Header() {
           href="/pricing"
           className="
             ml-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500
-            hover:brightness-110 text-white px-4 py-2 rounded-lg font-semibold transition
+            hover:brightness-110 text-black px-4 py-2 rounded-lg font-semibold transition
           "
         >
           Get Started
