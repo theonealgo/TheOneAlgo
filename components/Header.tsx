@@ -25,13 +25,14 @@ export default function Header() {
   },[]);
 
   return (
-    <header
-   className="
-     fixed inset-x-0 top-0 z-50 flex items-center justify-between
-     px-6 py-4
-     bg-transparent           /* no bar at all */
-   "
- >
+  <header
+  className="
+    fixed top-0 left-0 w-full
+    bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30
+    backdrop-blur-[2px]
+    text-white px-6 py-4 flex items-center justify-between z-50
+  "
+>
       {/* ───── Logo ───── */}
       <Link href="/" className="flex items-center">
         <Image
