@@ -51,14 +51,8 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      /* 🔹 transparent “glass” header so the background image shows through */
-      className="
-        fixed top-0 left-0 w-full z-50
-        px-6 py-4 flex items-center justify-between
-        backdrop-blur-md bg-black/30
-      "
-    >
+   <header className="fixed top-0 left-0 w-full bg-black/10 backdrop-blur
+                   text-white px-6 py-4 flex items-center justify-between z-50">
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <Image
