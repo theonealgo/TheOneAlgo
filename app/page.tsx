@@ -67,7 +67,7 @@ export default function Home() {
 
   return (
     <div className="relative">
-      {/* ─────────────────────────  HERO  ───────────────────────── */}
+      { ─────────────────────────  HERO  ───────────────────────── }
        <section
           className="relative flex items-center justify-start px-4 pb-32 bg-cover bg-center min-h-screen"
         style={{ backgroundImage: "url('/images/bground.jpg')" }}
@@ -130,7 +130,7 @@ export default function Home() {
           </button>
         </div>
       </section>
-{/* ─────────────────────  PERFORMANCE  ───────────────────── */}
+{ ─────────────────────  PERFORMANCE  ─────────────────────}
 <section id="performance" className="py-24 px-4 md:px-12 bg-amber-500/10">
   <div className="max-w-7xl mx-auto space-y-24">
     {performanceItems.map((item, i) => (
@@ -157,7 +157,7 @@ export default function Home() {
   </div>
 </section>
 
-{/* ─────────────────────  LIVE STATS  ───────────────────── */}
+{ ─────────────────────  LIVE STATS  ───────────────────── }
 <section className="py-24 px-4 md:px-12 bg-amber-500/10">
   <div className="max-w-6xl mx-auto text-center space-y-12">
     <h2 className="text-5xl font-bold text-white">Real Results. Real&nbsp;Time.</h2>
@@ -194,7 +194,7 @@ export default function Home() {
   </div>
 </section>
 
-{/* ────────────────────────  VIDEO  ─────────────────────── */}
+{────────────────────────  VIDEO  ─────────────────────── }
 <section className="relative py-24 px-4 md:px-12 overflow-hidden bg-amber-500/10">
   <video
     src="/images/videos/market-chart.mp4"
@@ -215,7 +215,7 @@ export default function Home() {
   </div>
 </section>
 
-{/* ─────────────────────────  FAQ  ───────────────────────── */}
+{ ─────────────────────────  FAQ  ───────────────────────── }
 <section className="px-4 md:px-12 pb-32 bg-amber-500/10">
   <FAQAccordion />
 </section>
