@@ -199,7 +199,7 @@ export default function Home() {
       </section>
       
       {/* ────────────────────────  VIDEO  ─────────────────────── */}
-      <section className="relative bg-black py-24 px-4 md:px-12 overflow-hidden">
+      <section className="relative bg-black/70 backdrop-blur-sm py-24 px-4 md:px-12 overflow-hidden">
         <video
           src="/images/videos/market-chart.mp4"
           autoPlay
@@ -221,7 +221,7 @@ export default function Home() {
 {/* …previous sections… */}
 
 {/* FAQ */}
-<section className="bg-black px-4 md:px-12 pb-24">   {/* ← pb-24 pushes it up */}
+<section className="bg-black/70 backdrop-blur-sm px-4 md:px-12 pb-32">
   <FAQAccordion />
 </section>
 
