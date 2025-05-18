@@ -25,7 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="bg-black">
       <Providers session={session}>
-        <body className="antialiased text-white min-h-screen flex flex-col">
+        <body className="antialiased text-white min-h-screen flex flex-col bg-black">
           <HeaderClient />        {/* runs only in the browser */}
           <main className="flex-1">{children}</main>
           <Footer />
