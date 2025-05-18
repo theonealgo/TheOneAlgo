@@ -68,8 +68,8 @@ export default function Home() {
   return (
     <div className="relative">
       {/* ─────────────────────────  HERO  ───────────────────────── */}
-      <section
-        className="relative flex items-center justify-start px-4 pt-16 pb-32 bg-cover bg-center min-h-screen"
+       <section
+          className="relative flex items-center justify-start px-4 pb-32 bg-cover bg-center min-h-screen"
         style={{ backgroundImage: "url('/images/bground.jpg')" }}
       >
         {/* translucent colour-wash over the photo */}
