@@ -3,65 +3,86 @@
 
 import Link      from 'next/link';
 import Image     from 'next/image';
-import {useState,useRef,useEffect} from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { User as UserIcon, ChevronDown } from 'lucide-react';
 
+/* menu data ---------------------------------------------------------- */
 const menus = [
-  { key:'product',   label:'Product',  items:[{href:'/pricing',label:'Pricing'},{href:'/features',label:'Features'}] },
-  { key:'resources', label:'Resources',items:[{href:'/documentation',label:'Documentation'},{href:'/tutorials',label:'Tutorials'}] },
-  { key:'company',   label:'Company',  items:[{href:'/about',label:'About'},{href:'/contact',label:'Contact'}] }
+  {
+    key: 'product',
+    label: 'Product',
+    items: [
+      { href: '/pricing',   label: 'Pricing' },
+      { href: '/features',  label: 'Features' },
+    ],
+  },
+  {
+    key: 'resources',
+    label: 'Resources',
+    items: [
+      { href: '/documentation', label: 'Documentation' },
+      { href: '/tutorials',     label: 'Tutorials' },
+    ],
+  },
+  {
+    key: 'company',
+    label: 'Company',
+    items: [
+      { href: '/about',   label: 'About' },
+      { href: '/contact', label: 'Contact' },
+    ],
+  },
 ];
 
+/* header component --------------------------------------------------- */
 export default function Header() {
-  const { data:session, status } = useSession();
-  const [open,setOpen]          = useState(false);
-  const dropRef                 = useRef<HTMLDivElement>(null);
+  const { data: session, status } = useSession();
 
-  /* close profile dropdown on outside click */
-  useEffect(()=>{
-    const h = (e:MouseEvent)=>{ if(dropRef.current && !dropRef.current.contains(e.target as Node)) setOpen(false); };
-    document.addEventListener('mousedown',h); return ()=>document.removeEventListener('mousedown',h);
-  },[]);
+  const [open, setOpen]       = useState(false);
+  const dropdownRef           = useRef<HTMLDivElement>(null);
+
+  /* close user-menu on outside click */
+  useEffect(() => {
+    const handle = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handle);
+    return () => document.removeEventListener('mousedown', handle);
+  }, []);
 
   return (
-  <header
-  className="
-    fixed top-0 left-0 w-full
-    bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30
-    backdrop-blur-[2px]
-    text-white px-6 py-4 flex items-center justify-between z-50
-  "
->
-      {/* ───── Logo ───── */}
+    <header
+      className="fixed top-0 left-0 w-full z-50
+                 backdrop-blur-[2px]              /* frosted-glass effect */
+                 text-white px-6 py-4 flex items-center justify-between"
+    >
+      {/* logo ---------------------------------------------------------- */}
       <Link href="/" className="flex items-center">
         <Image
           src="/images/theonelogo.png"
-          alt="TheOneAlgo logo"
+          alt="The One Algo logo"
           width={128}
           height={128}
           className="h-10 w-auto"
-          priority
         />
       </Link>
 
-      {/* ───── Primary navigation ───── */}
-      <nav className="flex items-center gap-8 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]">
-        {menus.map(({key,label,items})=>(
+      {/* nav ----------------------------------------------------------- */}
+      <nav className="flex items-center gap-6 text-white">
+        {menus.map(({ key, label, items }) => (
           <div key={key} className="relative group">
             <button className="hover:text-teal-300 transition">{label}</button>
 
-            {/* simple hover dropdown */}
-            <div
-              className="
-                absolute left-0 top-full mt-1 w-44 rounded bg-gray-900/90 shadow-lg py-2
-                opacity-0 pointer-events-none translate-y-1
-                group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0
-                transition-all duration-150
-              "
-            >
-              {items.map(({href,label})=>(
-                <Link key={href} href={href} className="block px-4 py-2 text-sm hover:bg-gray-800/70">
+            {/* dropdown */}
+            <div className="absolute left-0 top-full w-40 bg-gray-900/90 rounded shadow-lg py-2 z-50
+                            opacity-0 pointer-events-none
+                            group-hover:opacity-100 group-hover:pointer-events-auto
+                            transition-opacity duration-150">
+              {items.map(({ href, label }) => (
+                <Link key={href} href={href} className="block px-4 py-2 hover:bg-gray-800/60">
                   {label}
                 </Link>
               ))}
@@ -69,47 +90,50 @@ export default function Header() {
           </div>
         ))}
 
-        {/* CTA */}
+        {/* CTA button -------------------------------------------------- */}
         <Link
           href="/pricing"
-          className="ml-4 whitespace-nowrap rounded-lg px-4 py-2 font-semibold text-black
-                     bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500
-                     hover:brightness-110 transition"
+          className="ml-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500
+                     hover:brightness-110 text-black px-4 py-2 rounded-lg font-semibold transition"
         >
-          Get&nbsp;Started
+          Get Started
         </Link>
 
-        {/* Profile dropdown */}
-        <div ref={dropRef} className="relative">
+        {/* user menu --------------------------------------------------- */}
+        <div className="relative ml-2" ref={dropdownRef}>
           <button
-            onClick={()=>setOpen(o=>!o)}
-            className="flex items-center rounded-full bg-black/50 p-2 hover:bg-black/60"
+            onClick={() => setOpen(o => !o)}
+            className="flex items-center p-2 rounded-full bg-gray-800/70 hover:bg-gray-700/70"
           >
-            <UserIcon className="h-5 w-5"/>
-            <ChevronDown className="h-4 w-4 ml-1"/>
+            <UserIcon className="h-5 w-5" />
+            <ChevronDown className="h-4 w-4 ml-1" />
           </button>
 
           {open && (
-            <div className="absolute right-0 mt-2 w-48 rounded bg-gray-900/90 shadow-lg py-1">
-              <Link href="/help" className="block px-4 py-2 text-sm hover:bg-gray-800/70">Help</Link>
+            <div className="absolute right-0 mt-2 w-48 bg-gray-900/90 rounded shadow-lg py-1">
+              <Link href="/help" className="block px-4 py-2 text-sm hover:bg-gray-800/60">
+                Help
+              </Link>
 
               {status === 'unauthenticated' && (
                 <button
-                  onClick={()=>signIn(undefined,{callbackUrl:'/dashboard'})}
-                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-800/70"
+                  onClick={() => signIn(undefined, { callbackUrl: '/dashboard' })}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-gray-800/60"
                 >
-                  Sign&nbsp;In
+                  Sign In
                 </button>
               )}
 
               {status === 'authenticated' && session?.user && (
                 <>
-                  <span className="block px-4 py-2 text-sm truncate">{session.user.name ?? session.user.email}</span>
+                  <span className="block px-4 py-2 text-sm">
+                    {session.user.name ?? session.user.email}
+                  </span>
                   <button
-                    onClick={()=>signOut({callbackUrl:'/'})}
-                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-800/70"
+                    onClick={() => signOut({ callbackUrl: '/' })}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-gray-800/60"
                   >
-                    Sign&nbsp;Out
+                    Sign Out
                   </button>
                 </>
               )}
