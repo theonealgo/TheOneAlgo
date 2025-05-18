@@ -62,7 +62,7 @@ export default function PricingPage() {
     <div className="pt-28 text-white min-h-screen font-sans overflow-x-hidden">
       {/* toggle */}
       <div className="flex justify-center mt-12 mb-4">
-        <div className="bg-gray-900 p-1 rounded-full flex">
+        <div className="p-1 rounded-full flex">
           {(['monthly', 'yearly'] as const).map(cycle => (
             <button
               key={cycle}
