@@ -1,13 +1,12 @@
-// app/layout.tsx  ← replace entire file
+// app/layout.tsx
 import './styles/globals.css';
 
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import Providers from './providers';
-import Footer from '@/components/Footer';
 
-// HeaderClient is already a client component
-import HeaderClient from '@/components/HeaderClient';
+import Providers     from './providers';
+import HeaderClient  from '@/components/HeaderClient';   // client-only header
+import Footer        from '@/components/Footer';
 
 export const metadata = {
   title: 'The One Algo',
@@ -19,26 +18,31 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // get the session on the server once
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="en" className="bg-black">
-      <Providers session={session}>
-        <body className="antialiased text-white min-h-screen flex flex-col bg-black">
-         {/* ★ Global background image */}
+    <html lang="en">
+      <body className="antialiased text-white min-h-screen flex flex-col">
+
+        {/* ★ site-wide background image */}
         <div
           className="fixed inset-0 -z-50 bg-cover bg-center"
           style={{
             backgroundImage: "url('/images/bground.jpg')",
-            backgroundAttachment: 'fixed',   // nice parallax feel; drop if you don’t want it
+            backgroundAttachment: 'fixed', // parallax feel – remove if undesired
           }}
-        />  
-          <HeaderClient />        {/* runs only in the browser */}
+        />
+
+        {/* optional translucent wash over the photo
+        <div className="fixed inset-0 -z-40 bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30" />
+        */}
+
+        <Providers session={session}>
+          <HeaderClient />
           <main className="flex-1">{children}</main>
           <Footer />
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }
