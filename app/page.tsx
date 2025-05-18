@@ -133,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────  PERFORMANCE  ───────────────────── */}
-      <section id="performance" className="bg-black py-24 px-4 md:px-12">
+    <section id="performance" className="bg-black/70 py-24 px-4 md:px-12">
         <div className="max-w-7xl mx-auto space-y-24">
           {performanceItems.map((item, i) => (
             <div key={i} className="space-y-8 group">
@@ -160,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────  LIVE STATS  ───────────────────── */}
-      <section className="bg-gradient-to-r from-gray-900 to-black py-24 px-4 md:px-12">
+    <section className="bg-black/70 backdrop-blur-sm py-24 px-4 md:px-12">
         <div className="max-w-6xl mx-auto text-center space-y-12">
           <h2 className="text-5xl font-bold text-white">
             Real Results. Real&nbsp;Time.
