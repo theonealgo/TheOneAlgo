@@ -39,7 +39,7 @@ export default async function RootLayout({
 
         <Providers session={session}>
           <HeaderClient />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pt-24 min-h-screen">{children}</main>
           <Footer />
         </Providers>
       </body>
