@@ -33,11 +33,6 @@ export default async function RootLayout({
           }}
         />
 
-        {/* ——— single global tint / blur layer ——— */}
-        <div className="fixed inset-0 -z-40 bg-gradient-to-br
-                        from-cyan-800/30 via-black/55 to-purple-800/30
-                        backdrop-blur-[2px]" />
-
         <Providers session={session}>
           {/* Header sits on top and is fully transparent */}
           <HeaderClient />
