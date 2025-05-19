@@ -1,3 +1,4 @@
+// app/legal/page.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -10,8 +11,13 @@ export default function LegalPage() {
       {/* ★ Full-page background */}
       <div
         className="fixed inset-0 -z-50 bg-cover bg-center"
-      
+        style={{
+          backgroundImage: "url('/images/bground.jpg')",
+        }}
       />
+
+      {/* ——— single global tint / blur layer (optional) ——— */}
+      {/* <div className="fixed inset-0 -z-40 bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30 backdrop-blur-[2px]" /> */}
 
       {/* Hero Section */}
       <section
@@ -33,7 +39,7 @@ export default function LegalPage() {
             <motion.h1
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="text-5xl md:text-7xl font-bold gradient-text"
+              className="text-5xl md:text-7xl font-bold"
             >
               Legal Information
               <br />
@@ -44,7 +50,7 @@ export default function LegalPage() {
       </section>
 
       {/* Legal Content */}
-      <section className="py-20 px-4 bg-gray-900/80">
+      <section className="py-20 px-4 bg-gray-900/80 flex-shrink-0">
         <div className="max-w-5xl mx-auto space-y-16 text-gray-300">
           {/* Terms of Service */}
           <div>
@@ -88,6 +94,11 @@ export default function LegalPage() {
           </div>
         </div>
       </section>
+
+      {/* Footer (if you have one) */}
+      <footer className="py-8 text-center text-gray-400">
+        © {new Date().getFullYear()} The One Algo. All rights reserved.
+      </footer>
     </div>
   );
 }
