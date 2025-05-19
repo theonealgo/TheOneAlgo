@@ -88,9 +88,13 @@ export default function Header() {
                             group-hover:opacity-100 group-hover:pointer-events-auto
                             transition-opacity duration-150">
               {items.map(({ href, label }) => (
-                <Link key={href} href={href} className="block px-4 py-2 hover:bg-gray-800/60">
-                  {label}
-                </Link>
+               <Link
+  key={href}
+  href={href}
+  className="block px-4 py-2 rounded-md font-semibold text-black bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-500 hover:brightness-110 transition"
+>
+  {label}
+</Link>
               ))}
             </div>
           </div>
