@@ -1,4 +1,3 @@
-//aboutpage
 'use client';
 
 import { motion } from 'framer-motion';
@@ -7,11 +6,10 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
+    <div className="min-h-screen text-white font-sans">
       {/* Hero Section */}
       <section
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center gradient-border"
-        style={{ backgroundImage: "url('/images/bground.jpg')" }}
+        className="relative min-h-screen flex items-center justify-center bg-transparent gradient-border"
       >
         <div className="relative z-10 text-left px-4 max-w-6xl">
           <div className="flex items-center mb-12">
@@ -47,38 +45,41 @@ export default function AboutPage() {
       </section>
 
       {/* About Section */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 bg-transparent">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold mb-6">The One Algo — Empowering Traders with Precision & Innovation</h1>
-          
+          <h1 className="text-4xl font-bold mb-6">
+            The One Algo — Empowering Traders with Precision & Innovation
+          </h1>
+
           <p className="text-lg mb-6">
-            At <strong>The One Algo</strong>, we’re reshaping the way traders and investors approach the market. Our focus is to provide 
-            <strong> next-level trading strategies</strong> that combine <strong>sophistication</strong>, <strong>precision</strong>, and <strong>reliability</strong>, 
-            designed to suit the needs of both <strong>novices</strong> and <strong>experienced traders</strong>.
+            At <strong>The One Algo</strong>, we’re reshaping the way traders and investors approach the market. Our focus is to provide{' '}
+            <strong>next-level trading strategies</strong> that combine <strong>sophistication</strong>, <strong>precision</strong>, and{' '}
+            <strong>reliability</strong>, designed to suit the needs of both <strong>novices</strong> and <strong>experienced traders</strong>.
           </p>
 
           <p className="text-lg mb-6">
-            We are a <strong>leader</strong> in the world of TradingView’s community indicators, offering <strong>innovative and high-quality tools</strong> 
-            that cater to a broad range of trading strategies and market conditions. Our indicators and tools are designed to help you navigate the 
+            We are a <strong>leader</strong> in the world of TradingView’s community indicators, offering <strong>innovative and high-quality tools</strong>{' '}
+            that cater to a broad range of trading strategies and market conditions. Our indicators and tools are designed to help you navigate the
             complexities of the market with greater clarity and confidence.
           </p>
 
           <p className="text-lg mb-6">
-            We believe that <strong>transparency</strong> is key in an industry often filled with confusion and unsubstantiated claims. We don’t play games, 
-            and we don’t overcomplicate things. Our mission is simple: <strong>share powerful tools</strong> and <strong>insightful strategies</strong> that 
-            actually work. No tricks, no false promises, just <strong>genuine expertise</strong> rooted in years of experience as both developers and traders.
+            We believe that <strong>transparency</strong> is key in an industry often filled with confusion and unsubstantiated claims. We don’t play
+            games, and we don’t overcomplicate things. Our mission is simple: <strong>share powerful tools</strong> and <strong>insightful strategies</strong>{' '}
+            that actually work. No tricks, no false promises, just <strong>genuine expertise</strong> rooted in years of experience as both developers
+            and traders.
           </p>
 
           <p className="text-lg mb-6">
-            Whether you're trading stocks or forex, our <strong>cutting-edge indicators</strong> give you a clear edge in understanding market trends and 
-            making informed decisions. We give you the tools to take control of your trading, helping you identify opportunities, manage risks, and ultimately, 
-            <strong>improve your profitability</strong>.
+            Whether you're trading stocks or forex, our <strong>cutting-edge indicators</strong> give you a clear edge in understanding market trends
+            and making informed decisions. We give you the tools to take control of your trading, helping you identify opportunities, manage risks,
+            and ultimately, <strong>improve your profitability</strong>.
           </p>
 
           <p className="text-lg mb-6">
-            Our commitment to transparency means we open-source the majority of our work, making <strong>hundreds of indicators</strong> and tools freely 
-            available for anyone to use and improve. For those who want the absolute best, our exclusive <strong>premium indicators</strong> offer even more 
-            advanced insights and features, designed for those who are serious about trading.
+            Our commitment to transparency means we open-source the majority of our work, making <strong>hundreds of indicators</strong> and tools freely
+            available for anyone to use and improve. For those who want the absolute best, our exclusive <strong>premium indicators</strong> offer
+            even more advanced insights and features, designed for those who are serious about trading.
           </p>
         </div>
       </section>
