@@ -120,7 +120,7 @@ export default function PricingPage() {
       {/* footer notice */}
      <div className="py-12 px-4 md:px-12 text-center">
         <h3 className="text-2xl font-semibold mb-4">Safe & Secure Checkout</h3>
-        <p className="text-gray-400 max-w-2xl mx-auto mb-6 text-sm">
+       <p className="text-white    max-w-2xl mx-auto mb-6 text-sm">
           Cancel anytime in one click from within your account. After signup,
           access is instant. Trade at your own risk.
         </p>
