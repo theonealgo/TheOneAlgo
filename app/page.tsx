@@ -110,9 +110,8 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      {/* ─────────────────────  PERFORMANCE  ───────────────────── */}
- <section id="performance" className="py-24 px-4 md:px-12">
+{/* ─────────────────────  PERFORMANCE  ───────────────────── */}
+<section id="performance" className="py-24 px-4 md:px-12">
   <div className="max-w-7xl mx-auto space-y-24">
     {performanceItems.map((item, i) => (
       <div key={i} className="space-y-8">
@@ -137,7 +136,6 @@ export default function Home() {
     ))}
   </div>
 </section>
-
       {/* ─────────────────────  LIVE STATS  ───────────────────── */}
     <section className="py-24 px-4 md:px-12">
         <div className="max-w-6xl mx-auto text-center space-y-12">
