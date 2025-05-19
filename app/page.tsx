@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────  PERFORMANCE  ───────────────────── */}
-    section id="performance" className="py-24 px-4 md:px-12">
+   <section id="performance" className="py-24 px-4 md:px-12">
         <div className="max-w-7xl mx-auto space-y-24">
           {performanceItems.map((item, i) => (
             <div key={i} className="space-y-8">
