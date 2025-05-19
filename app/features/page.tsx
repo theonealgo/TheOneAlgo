@@ -125,7 +125,7 @@ export default function FeaturesPage() {
         <section className="py-20">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-white mb-8">Adjustable Settings</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-white-300 max-w-2xl mx-auto mb-6">
               Our indicators offer highly customizable inputs to match your trading strategy. Here's a breakdown of the key settings:
             </p>
 
