@@ -112,30 +112,31 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────  PERFORMANCE  ───────────────────── */}
-   <section id="performance" className="py-24 px-4 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-24">
-          {performanceItems.map((item, i) => (
-            <div key={i} className="space-y-8">
-              <Zoom zoomMargin={40}>
-                <div className="relative h-[600px] w-full">
-                  <Image
-                    {...item}
-                    fill
-                    quality={100}
-                    priority
-                    className="rounded-xl object-contain hover:shadow-xl transition-shadow"
-                    sizes="(max-width:768px)100vw,(max-width:1200px)50vw,800px"
-                  />
-                </div>
-              </Zoom>
-              <div className="px-4 space-y-4">
-                <h3 className="text-3xl font-bold text-white">{item.title}</h3>
-                <p className="text-gray-300 text-lg">{item.desc}</p>
-              </div>
-            </div>
-          ))}
+ <section id="performance" className="py-24 px-4 md:px-12">
+  <div className="max-w-7xl mx-auto space-y-24">
+    {performanceItems.map((item, i) => (
+      <div key={i} className="space-y-8">
+        <Zoom zoomMargin={40}>
+          <div className="relative h-[600px] w-full">
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              quality={100}
+              priority
+              className="rounded-xl object-contain hover:shadow-xl transition-shadow"
+              sizes="(max-width:768px)100vw,(max-width:1200px)50vw,800px"
+            />
+          </div>
+        </Zoom>
+        <div className="px-4 space-y-4">
+          <h3 className="text-3xl font-bold text-white">{item.title}</h3>
+          <p className="text-gray-300 text-lg">{item.desc}</p>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ─────────────────────  LIVE STATS  ───────────────────── */}
     <section className="py-24 px-4 md:px-12">
