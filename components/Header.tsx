@@ -74,7 +74,13 @@ export default function Header() {
       <nav className="flex items-center gap-6 text-white">
         {menus.map(({ key, label, items }) => (
           <div key={key} className="relative group">
-            <button className="hover:text-teal-300 transition">{label}</button>
+            <button className="
+  bg-gradient-to-r from-cyan-400 via-teal-400 to-fuchsia-500
+  bg-clip-text text-transparent font-semibold
+  transition
+">
+  {label}
+</button>
 
             {/* dropdown */}
             <div className="absolute left-0 top-full w-40 bg-gray-900/90 rounded shadow-lg py-2 z-50
