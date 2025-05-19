@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────  PERFORMANCE  ───────────────────── */}
-     <section id="performance" className="py-24 px-4 md:px-12 backdrop-blur-sm">
+    section id="performance" className="py-24 px-4 md:px-12">
         <div className="max-w-7xl mx-auto space-y-24">
           {performanceItems.map((item, i) => (
             <div key={i} className="space-y-8">
@@ -138,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────  LIVE STATS  ───────────────────── */}
-    <section className="py-24 px-4 md:px-12 backdrop-blur-sm">
+    <section className="py-24 px-4 md:px-12">
         <div className="max-w-6xl mx-auto text-center space-y-12">
           <h2 className="text-5xl font-bold text-white">Real Results. Real&nbsp;Time.</h2>
           <p className="text-2xl text-gray-300">
@@ -162,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* ───────────────────────── VIDEO ───────────────────────── */}
-     <section className="relative py-24 px-4 md:px-12 overflow-hidden backdrop-blur-sm">
+     <section className="relative py-24 px-4 md:px-12 overflow-hidden">
         <video
           src="/images/videos/market-chart.mp4"
           autoPlay
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* ───────────────────────── FAQ ────────────────────────── */}
-     <section className="px-4 md:px-12 pb-32 backdrop-blur-sm">
+    <section className="px-4 md:px-12 pb-32">
         <FAQAccordion />
       </section>
 
