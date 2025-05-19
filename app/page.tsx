@@ -74,7 +74,6 @@ export default function Home() {
       {/* ─────────────────────────  HERO  ───────────────────────── */}
       <section
         className="relative flex items-center justify-start px-4 pb-32 bg-cover bg-center min-h-screen"
-        style={{ backgroundImage: "url('/images/bground.jpg')" }}
       >
 
         <div className="relative z-10 flex flex-col justify-center px-8 md:px-16 py-16 max-w-6xl">
