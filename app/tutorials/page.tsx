@@ -114,7 +114,7 @@ export default function TutorialsPage() {
                 </p>
               </div>
             </div>
-            <p className="text-center italic mt-4 text-gray-400">
+            <p className="text-center italic mt-4 text-white-400">
               Note: Click and hold to zoom. Images are in 4K resolution for maximum clarity.
             </p>
           </div>
