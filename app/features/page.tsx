@@ -8,10 +8,6 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Hero Section */}
-      <section
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center gradient-border"
-        style={{ backgroundImage: "url('/images/bground.jpg')" }}
-      >
         <div className="relative z-10 text-left px-4 max-w-6xl">
           <div className="flex items-center mb-12">
             <Link href="/">
