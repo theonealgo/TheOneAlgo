@@ -1,4 +1,3 @@
-// app/legal/page.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -8,21 +7,16 @@ import Link from 'next/link';
 export default function LegalPage() {
   return (
     <div className="relative min-h-screen font-sans text-white flex flex-col">
-      {/* ★ Full-page background */}
-      <div
-        className="fixed inset-0 -z-50 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/bground.jpg')",
-        }}
-      />
 
-      {/* ——— single global tint / blur layer (optional) ——— */}
+      {/* ★ Full‐page background is already rendered in layout */}
+      {/* No need to repeat the image here! */}
+
+      {/* ——— optional tint/blur layer (uncomment if you want it) ——— */}
       {/* <div className="fixed inset-0 -z-40 bg-gradient-to-br from-cyan-800/30 via-black/55 to-purple-800/30 backdrop-blur-[2px]" /> */}
 
       {/* Hero Section */}
       <section
-        className="relative flex items-center justify-center flex-1 bg-transparent bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/bground.jpg')" }}
+        className="relative flex items-center justify-center flex-1 bg-transparent"
       >
         <div className="relative z-10 text-left px-4 max-w-6xl">
           <div className="flex items-center mb-12">
@@ -50,12 +44,12 @@ export default function LegalPage() {
       </section>
 
       {/* Legal Content */}
-      <section className="py-20 px-4 bg-gray-900/80 flex-shrink-0">
-        <div className="max-w-5xl mx-auto space-y-16 text-gray-300">
+      <section className="py-20 px-4 flex-shrink-0">
+        <div className="max-w-5xl mx-auto space-y-16">
           {/* Terms of Service */}
           <div>
-            <h2 className="text-3xl font-bold mb-6 text-white">Terms of Service</h2>
-            <div className="space-y-4">
+            <h2 className="text-3xl font-bold mb-6">Terms of Service</h2>
+            <div className="space-y-4 text-white">
               <p>Last Updated: [Date]</p>
               
               <h3 className="text-xl font-semibold mt-6">1. Acceptance of Terms</h3>
@@ -71,8 +65,8 @@ export default function LegalPage() {
 
           {/* Privacy Policy */}
           <div>
-            <h2 className="text-3xl font-bold mb-6 text-white">Privacy Policy</h2>
-            <div className="space-y-4">
+            <h2 className="text-3xl font-bold mb-6">Privacy Policy</h2>
+            <div className="space-y-4 text-white">
               <h3 className="text-xl font-semibold">1. Information Collection</h3>
               <p>We collect minimal personal data including email addresses and usage statistics to improve our services.</p>
 
@@ -86,8 +80,8 @@ export default function LegalPage() {
 
           {/* Disclaimer */}
           <div>
-            <h2 className="text-3xl font-bold mb-6 text-white">Trading Disclaimer</h2>
-            <div className="space-y-4">
+            <h2 className="text-3xl font-bold mb-6">Trading Disclaimer</h2>
+            <div className="space-y-4 text-white">
               <p>The One indicators are educational tools only. Past performance does not guarantee future results. Trading financial instruments carries substantial risk of loss. We are not responsible for any trading decisions made using our indicators.</p>
               <p>Always consult with a qualified financial advisor before making any investment decisions.</p>
             </div>
@@ -96,7 +90,7 @@ export default function LegalPage() {
       </section>
 
       {/* Footer (if you have one) */}
-      <footer className="py-8 text-center text-gray-400">
+      <footer className="py-8 text-center text-white">
         © {new Date().getFullYear()} The One Algo. All rights reserved.
       </footer>
     </div>
