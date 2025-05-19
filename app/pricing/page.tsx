@@ -118,7 +118,7 @@ export default function PricingPage() {
       </section>
 
       {/* footer notice */}
-      <div className="bg-gray-900 py-12 px-4 md:px-12 text-center">
+      <div className="bg-black/60 py-12 px-4 md:px-12 text-center">
         <h3 className="text-2xl font-semibold mb-4">Safe & Secure Checkout</h3>
         <p className="text-gray-400 max-w-2xl mx-auto mb-6 text-sm">
           Cancel anytime in one click from within your account. After signup,
