@@ -1,4 +1,3 @@
-// app/documentation/page.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -53,7 +52,7 @@ export default function DocumentationPage() {
                 />
               </div>
             </Zoom>
-            <div className="p-6 rounded-xl text-gray-200">
+            <div className="p-6 rounded-xl text-white bg-gray-800/70">
               <p>
                 The last five trades displayed above were executed using <strong>The One Forex Indicator</strong>, resulting in five consecutive wins...
               </p>
@@ -73,7 +72,7 @@ export default function DocumentationPage() {
                 />
               </div>
             </Zoom>
-            <div className="p-6 rounded-xl text-gray-200">
+            <div className="p-6 rounded-xl text-white bg-gray-800/70">
               <p>
                 This SPY 15-minute chart highlights 84 trades executed using <strong>The One Stock Strategy</strong>. Out of those, 75 were winners...
               </p>
@@ -100,7 +99,7 @@ export default function DocumentationPage() {
                 </Zoom>
               ))}
             </div>
-            <div className="p-6 rounded-xl text-gray-200">
+            <div className="p-6 rounded-xl text-white bg-gray-800/70">
               <p>
                 On the right, we’ve got the <strong>GBPUSD 5-minute strategy</strong> running 43 trades with a phenomenal 41 wins and only 2 losses...
               </p>
@@ -120,7 +119,7 @@ export default function DocumentationPage() {
                 />
               </div>
             </Zoom>
-            <div className="p-6 rounded-xl text-gray-200">
+            <div className="p-6 rounded-xl text-white bg-gray-800/70">
               <p>
                 The <strong>SPY Weekly chart</strong> using <strong>The One Strategy</strong> is nothing short of remarkable — 19 winning trades, 0 losses...
               </p>
