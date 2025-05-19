@@ -10,7 +10,7 @@ export default function LegalPage() {
       {/* ★ Full-page background */}
       <div
         className="fixed inset-0 -z-50 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/bground.jpg')" }}
+      
       />
 
       {/* Hero Section */}
