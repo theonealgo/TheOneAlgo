@@ -30,7 +30,15 @@ export async function POST(req: Request) {
   console.error('DB error:', error);
   return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
 }
+if (!session?.user?.id) {
+  console.error('Unauthorized: session', session);
+  return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+}
 
+if (!username) {
+  console.error('Missing username in body');
+  return NextResponse.json({ error: 'Missing username' }, { status: 400 });
+}
   // --- BEGIN EMAIL LOGIC ---
   try {
     const userEmail = session.user.email ?? "unknown";
