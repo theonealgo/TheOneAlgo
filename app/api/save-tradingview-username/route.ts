@@ -21,10 +21,10 @@ export async function POST(req: Request) {
   }
 
   // Update in Supabase as before
-  const { error } = await supabase
-    .from('profiles')
-    .update({ tradingViewUsername: username })
-    .eq('id', session.user.id);
+ const { error } = await supabase
+  .from('profiles')
+  .update({ tradingViewUsername: username })
+  .eq('email', session.user.email);
 
  if (error) {
   console.error('DB error:', error);
