@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
-import nodemailer from 'nodemailer'; // <-- You had this line, keep it
+import nodemailer from 'nodemailer';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -11,6 +11,10 @@ const supabase = createClient(
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
+
+  // Log the entire session object for debugging
+  console.log('session:', session);
+
   if (!session?.user?.id) {
     console.error('Unauthorized: session', session);
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -26,7 +30,7 @@ export async function POST(req: Request) {
   const { error } = await supabase
     .from('profiles')
     .update({ tradingViewUsername: username })
-    .eq('email', session.user.email);
+    .eq('email', session.user.email); // <-- This assumes email exists
 
   if (error) {
     console.error('DB error:', error);
@@ -40,7 +44,7 @@ export async function POST(req: Request) {
       service: 'gmail',
       auth: {
         user: 'theonealgo@gmail.com',
-        pass: process.env.GMAIL_APP_PASSWORD, // Must be set in your env!
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
     });
 
