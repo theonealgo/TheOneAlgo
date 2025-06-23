@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
-import nodemailer from 'nodemailer'; // <-- ADD THIS LINE
+import nodemailer from 'nodemailer'; // <-- You had this line, keep it
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -12,33 +12,27 @@ const supabase = createClient(
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {
+    console.error('Unauthorized: session', session);
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const { username } = await req.json();
   if (!username) {
+    console.error('Missing username in body');
     return NextResponse.json({ error: 'Missing username' }, { status: 400 });
   }
 
-  // Update in Supabase as before
- const { error } = await supabase
-  .from('profiles')
-  .update({ tradingViewUsername: username })
-  .eq('email', session.user.email);
+  // --- UPDATE BY EMAIL ONLY ---
+  const { error } = await supabase
+    .from('profiles')
+    .update({ tradingViewUsername: username })
+    .eq('email', session.user.email);
 
- if (error) {
-  console.error('DB error:', error);
-  return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
-}
-if (!session?.user?.id) {
-  console.error('Unauthorized: session', session);
-  return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-}
+  if (error) {
+    console.error('DB error:', error);
+    return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
+  }
 
-if (!username) {
-  console.error('Missing username in body');
-  return NextResponse.json({ error: 'Missing username' }, { status: 400 });
-}
   // --- BEGIN EMAIL LOGIC ---
   try {
     const userEmail = session.user.email ?? "unknown";
