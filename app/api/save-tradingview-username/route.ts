@@ -26,10 +26,10 @@ export async function POST(req: Request) {
     .update({ tradingViewUsername: username })
     .eq('id', session.user.id);
 
-  if (error) {
-    console.error('DB error:', error);
-    return NextResponse.json({ error: 'Database error' }, { status: 500 });
-  }
+ if (error) {
+  console.error('DB error:', error);
+  return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
+}
 
   // --- BEGIN EMAIL LOGIC ---
   try {
