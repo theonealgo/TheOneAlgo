@@ -11,7 +11,12 @@ const supabase = createClient(
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
-
+  // FORCE VISIBLE LOGGING!
+  try {
+    console.log('DEBUG SESSION:', JSON.stringify(session));
+  } catch (err) {
+    console.error('Could not stringify session:', err, session);
+  }
   // Log the entire session object for debugging
   console.log('session:', session);
 
